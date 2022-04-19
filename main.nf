@@ -11,6 +11,7 @@ Channel.fromFilePairs(params.reads)
 
 include {fastp} from "./modules/fastp"
 include {star_generate; star_align} from "./modules/star"
+include {featurecounts} from "./modules/featurecounts"
 	
 workflow rnaseq_small{	
 
@@ -22,9 +23,15 @@ workflow rnaseq_small{
 	main:
 		fastp(read_input_ch)
 		reads = fastp.out.samples_fastp
+		
 		star_generate(gtf, transcriptome)
 		index = star_generate.out.index_star
+		
 		star_align(reads, index)
+		bam = star_align.out.bam_files
+		
+		featurecounts(bam, gtf)
+		
 	
 }
 
