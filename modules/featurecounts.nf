@@ -7,7 +7,7 @@ process featurecounts{
 	path(gtf) 
 	
 	output:
-	
+	path("*.counts.tsv"), emit: quant_out
 	
 	script:
 	"""

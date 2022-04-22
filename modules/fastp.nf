@@ -1,5 +1,5 @@
-process fastp{	
-
+process fastp{		
+	
 	container = 'nanozoo/fastp'
 	
 	input: 

@@ -18,6 +18,7 @@ process star_generate{
 }
 
 process star_align{
+
 	container = 'otiai10/star-alignment'
     
 	input:

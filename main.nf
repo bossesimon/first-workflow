@@ -9,6 +9,7 @@ Channel.fromFilePairs(params.reads)
 		.set{read_input_ch}
 	
 
+include {fastqc} from "./modules/fastqc"
 include {fastp} from "./modules/fastp"
 include {star_generate; star_align} from "./modules/star"
 include {featurecounts} from "./modules/featurecounts"
@@ -21,9 +22,13 @@ workflow rnaseq_small{
 		gtf
 		transcriptome
 
+
 	main:
+
 		fastp(read_input)
 		reads = fastp.out.samples_fastp
+		
+		fastqc(reads)
 		
 		if(!params.hisat2){
 		
@@ -40,14 +45,9 @@ workflow rnaseq_small{
 		hisat2_align(reads, index, transcriptome)
 		quant = hisat2_align.out.sam_files
 		}
-		
-		
-		
-		
-		
+				
 		featurecounts(quant, gtf)
-		
-	
+			
 }
 
 workflow{
