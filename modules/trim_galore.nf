@@ -3,10 +3,10 @@ process trim_galore{
 	container = 'mskaccess/trim_galore'
 	
 	input:
-	path(reads)
+	tuple val(pair_id), path(reads)
 	
 	output:
-	path("${reads.baseName}_trimmed.fq"), emit: trimmed_reads
+	tuple val(pair_id), path("fastp_*_{1,2}_trimmed.fq"), emit: trimmed_reads 
 	
 	script:
 	"""
