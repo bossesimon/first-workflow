@@ -1,6 +1,6 @@
 process hisat2_generate{
 
-	container = 'zlskidmore/hisat2'
+	label 'hisat2'
 	
 	input: 
 	path (transcriptome)
@@ -17,7 +17,7 @@ process hisat2_generate{
 
 process hisat2_align{
 
-	container = 'zlskidmore/hisat2'
+	label 'hisat2'
 	
 	input:
 	tuple val(pair_id), path(reads) 

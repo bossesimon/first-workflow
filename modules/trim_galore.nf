@@ -1,6 +1,6 @@
 process trim_galore{
 
-	container = 'mskaccess/trim_galore'
+	label 'trim_galore'
 	
 	input:
 	tuple val(pair_id), path(reads)

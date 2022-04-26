@@ -1,6 +1,6 @@
 process fastp{		
 	
-	container = 'nanozoo/fastp'
+	label 'fastp'
 	
 	input: 
 	tuple val(pair_id), path(reads)

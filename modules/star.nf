@@ -1,6 +1,6 @@
 process star_generate{
 
-	container = 'otiai10/star-alignment'
+	label 'star'
 	
 	input:
 	path(gtf) 
@@ -19,7 +19,7 @@ process star_generate{
 
 process star_align{
 
-	container = 'otiai10/star-alignment'
+	label 'star'
     
 	input:
 	tuple val(pair_id), path(reads) 

@@ -1,6 +1,6 @@
 process featurecounts{
 
-	container = 'dsaha0295/featurecounts'
+	label 'featurecounts'
 	
 	input:
 	path(bam) 

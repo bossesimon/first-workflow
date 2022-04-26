@@ -1,12 +1,12 @@
 nextflow.enable.dsl=2
 
 
-params.reads = "/home/simon/Documents/GitHub/first-workflow/input/*_{1,2}.fq"
-params.transcriptome = "/home/simon/first_workflow/input/hg19.fa"
-params.gtf = "/home/simon/Documents/GitHub/first-workflow/input/ref-transcripts.gtf"
-
 Channel.fromFilePairs(params.reads)
 		.set{read_input_ch}
+		
+
+
+	
 	
 
 include {fastqc} from "./modules/fastqc"

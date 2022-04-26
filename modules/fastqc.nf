@@ -1,6 +1,6 @@
 process fastqc{
 
-	container = 'staphb/fastqc'
+	label 'fastqc'
 	
 	input:
 	tuple val(pair_id), path(reads)
